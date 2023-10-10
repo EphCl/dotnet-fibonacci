@@ -12,10 +12,11 @@ on:
 jobs:
   tags:
     runs-on: ubuntu-latest
+    permissions: write-all
     outputs:
       new_version: ${{ steps.tag.outputs.new_version }}
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: Bump version and push tag
         id: tag_version
         if: github.ref == 'refs/heads/main'
